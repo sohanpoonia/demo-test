@@ -33,10 +33,6 @@ import com.example.service.CounterServiceInterface;
 @Controller
 @SpringBootApplication
 public class Main {
-
- 
-
- 
   @Autowired CounterServiceInterface counterServiceInterface;
 
   public static void main(String[] args) throws Exception {
@@ -50,7 +46,7 @@ public class Main {
 
   @RequestMapping(method=RequestMethod.GET,value="/fetchCurrentTimeAndCount",produces=MediaType.APPLICATION_JSON_VALUE)
   @ResponseBody
-  CounterModel fetchCurrentTimeAndCount(Map<String, Object> model) {
+  CounterModel fetchCurrentTimeAndCount() {
 	  CounterModel counterModel =new CounterModel();
 	  try  {
 		  counterModel= counterServiceInterface.fetchCurrentTimeAndCount();
