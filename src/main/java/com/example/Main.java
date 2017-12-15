@@ -26,8 +26,11 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.sql.DataSource;
 
@@ -58,15 +61,17 @@ public class Main {
     return "index";
   }
 
-  @RequestMapping("/db")
-  String db(Map<String, Object> model) {
+  @RequestMapping(method=RequestMethod.GET,value="/db",produces=MediaType.APPLICATION_JSON_VALUE)
+  @ResponseBody
+  CounterModel db(Map<String, Object> model) {
+	  CounterModel counterModel =new CounterModel();
 	  try  {
-		  CounterModel counterModel= counterServiceInterface.fetchCurrentTimeAndCount();
+		   counterModel= counterServiceInterface.fetchCurrentTimeAndCount();
 		  model.put("records", counterModel);
-		  return "db";
+		  return counterModel;
 	  } catch (Exception e) {
 		  model.put("message", e.getMessage());
-		  return "error";
+		  return counterModel;
 	  }
   }
 
