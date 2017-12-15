@@ -29,6 +29,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.sql.DataSource;
 
@@ -37,6 +38,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 @Controller
@@ -49,12 +51,13 @@ public class Main {
   @Autowired
   private DataSource dataSource;
   
- /* @Autowired
-  private CounterServiceInterface counterServiceInterface;*/
+  @Autowired
+  private CounterServiceInterface counterServiceInterface;
 
   public static void main(String[] args) throws Exception {
     SpringApplication.run(Main.class, args);
   }
+  
 
   @RequestMapping("/")
   String index() {
@@ -62,9 +65,13 @@ public class Main {
   }
 
   @RequestMapping("/db")
-  String db(Map<String, Object> model) throws ApplicationException {
-	//  CounterModel counterModel=  counterServiceInterface.fetchCurrentTimeAndCount();
-	  return "test data";
+  @ResponseBody
+  Map<String, Object> db() throws ApplicationException {
+	  Map<String, Object> map=new HashMap<>();
+	  CounterModel counterModel= counterServiceInterface.fetchCurrentTimeAndCount();
+	  map.put("time", counterModel.getTimestamp());
+	  map.put("count", counterModel.getCalls());
+	  return map;
   }
 
   @Bean
