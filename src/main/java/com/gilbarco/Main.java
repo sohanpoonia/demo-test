@@ -14,9 +14,7 @@
  * limitations under the License.
  */
 
-package com.example;
-
-import java.util.Map;
+package com.gilbarco;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -27,9 +25,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.example.exception.ApplicationException;
-import com.example.model.CounterModel;
-import com.example.service.CounterServiceInterface;
+import com.gilbarco.exception.ApplicationException;
+import com.gilbarco.model.CounterModel;
+import com.gilbarco.service.CounterServiceInterface;
 
 @Controller
 @SpringBootApplication

@@ -1,13 +1,13 @@
-package com.example.service.impl;
+package com.gilbarco.service.impl;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
 import org.springframework.stereotype.Service;
 
-import com.example.exception.ApplicationException;
-import com.example.model.CounterModel;
-import com.example.service.CounterServiceInterface;
-import com.example.utility.DateUtility;
+import com.gilbarco.exception.ApplicationException;
+import com.gilbarco.model.CounterModel;
+import com.gilbarco.service.CounterServiceInterface;
+import com.gilbarco.utility.DateUtility;
 
 @Service
 public class CounterServiceInterfaceImpl implements CounterServiceInterface {

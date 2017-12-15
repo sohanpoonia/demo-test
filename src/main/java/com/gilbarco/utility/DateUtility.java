@@ -1,9 +1,9 @@
-package com.example.utility;
+package com.gilbarco.utility;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import com.example.common.CommonConstants;
+import com.gilbarco.common.CommonConstants;
 
 public class DateUtility {
 

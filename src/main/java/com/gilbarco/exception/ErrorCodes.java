@@ -1,4 +1,4 @@
-package com.example.exception;
+package com.gilbarco.exception;
 
 import java.io.Serializable;
 import java.util.ArrayList;

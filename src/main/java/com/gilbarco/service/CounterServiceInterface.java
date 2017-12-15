@@ -1,7 +1,7 @@
-package com.example.service;
+package com.gilbarco.service;
 
-import com.example.exception.ApplicationException;
-import com.example.model.CounterModel;
+import com.gilbarco.exception.ApplicationException;
+import com.gilbarco.model.CounterModel;
 
 public interface CounterServiceInterface extends GenericServiceInterface<CounterModel> {
 

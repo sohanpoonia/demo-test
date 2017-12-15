@@ -1,6 +1,6 @@
-package com.example.service;
+package com.gilbarco.service;
 
-import com.example.exception.ApplicationException;
+import com.gilbarco.exception.ApplicationException;
 
 public interface GenericServiceInterface<T> {
 	
