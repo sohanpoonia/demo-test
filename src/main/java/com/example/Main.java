@@ -27,6 +27,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.example.exception.ApplicationException;
 import com.example.model.CounterModel;
 import com.example.service.CounterServiceInterface;
 
@@ -50,8 +51,7 @@ public class Main {
 	  CounterModel counterModel =new CounterModel();
 	  try  {
 		  counterModel= counterServiceInterface.fetchCurrentTimeAndCount();
-		  return counterModel;
-	  } catch (Exception e) {
+	  } catch (ApplicationException e) {
 
 	  }
 	  return counterModel;

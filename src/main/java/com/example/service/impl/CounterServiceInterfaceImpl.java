@@ -13,7 +13,7 @@ import com.example.utility.DateUtility;
 public class CounterServiceInterfaceImpl implements CounterServiceInterface {
 	private AtomicInteger counter=new AtomicInteger();
 	@Override
-	public CounterModel fetchCurrentTimeAndCount() {
+	public CounterModel fetchCurrentTimeAndCount() throws ApplicationException {
 		CounterModel counterModel=new CounterModel();
 		counterModel.setCalls(counter.incrementAndGet());
 		counterModel.setTimestamp(DateUtility.formatCurrentDate());
