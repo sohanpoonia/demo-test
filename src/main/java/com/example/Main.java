@@ -62,8 +62,7 @@ public class Main {
   String db(Map<String, Object> model) {
 	  try  {
 		  CounterModel counterModel= counterServiceInterface.fetchCurrentTimeAndCount();
-		  model.put("time", counterModel.getTimestamp());
-		  model.put("records", counterModel.getCalls()+counterModel.getTimestamp());
+		  model.put("records", counterModel);
 		  return "db";
 	  } catch (Exception e) {
 		  model.put("message", e.getMessage());
