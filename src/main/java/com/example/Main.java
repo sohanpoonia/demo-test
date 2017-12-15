@@ -67,10 +67,10 @@ public class Main {
 	  CounterModel counterModel =new CounterModel();
 	  try  {
 		   counterModel= counterServiceInterface.fetchCurrentTimeAndCount();
-		  model.put("records", counterModel);
+		 // model.put("records", counterModel);
 		  return counterModel;
 	  } catch (Exception e) {
-		  model.put("message", e.getMessage());
+		 // model.put("message", e.getMessage());
 		  return counterModel;
 	  }
   }
