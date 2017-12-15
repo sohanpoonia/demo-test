@@ -16,6 +16,7 @@
 
 package com.example;
 
+import com.example.exception.ApplicationException;
 import com.example.model.CounterModel;
 import com.example.service.CounterServiceInterface;
 import com.zaxxer.hikari.HikariConfig;
@@ -61,7 +62,7 @@ public class Main {
   }
 
   @RequestMapping("/db")
-  String db(Map<String, Object> model) {
+  String db(Map<String, Object> model) throws ApplicationException {
 	  CounterModel counterModel=  counterServiceInterface.fetchCurrentTimeAndCount();
 	  return counterModel.getTimestamp()+"  "+counterModel.getCalls().toString();
   }
