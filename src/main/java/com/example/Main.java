@@ -49,8 +49,8 @@ public class Main {
   @Autowired
   private DataSource dataSource;
   
-  @Autowired
-  private CounterServiceInterface counterServiceInterface;
+ /* @Autowired
+  private CounterServiceInterface counterServiceInterface;*/
 
   public static void main(String[] args) throws Exception {
     SpringApplication.run(Main.class, args);
@@ -63,8 +63,8 @@ public class Main {
 
   @RequestMapping("/db")
   String db(Map<String, Object> model) throws ApplicationException {
-	  CounterModel counterModel=  counterServiceInterface.fetchCurrentTimeAndCount();
-	  return counterModel.getTimestamp()+"  "+counterModel.getCalls().toString();
+	//  CounterModel counterModel=  counterServiceInterface.fetchCurrentTimeAndCount();
+	  return "test data";
   }
 
   @Bean
