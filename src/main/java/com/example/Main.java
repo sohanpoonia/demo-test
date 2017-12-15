@@ -61,18 +61,17 @@ public class Main {
     return "index";
   }
 
-  @RequestMapping(method=RequestMethod.GET,value="/db",produces=MediaType.APPLICATION_JSON_VALUE)
+  @RequestMapping(method=RequestMethod.GET,value="/fetchCurrentTimeAndCount",produces=MediaType.APPLICATION_JSON_VALUE)
   @ResponseBody
-  CounterModel db(Map<String, Object> model) {
+  CounterModel fetchCurrentTimeAndCount(Map<String, Object> model) {
 	  CounterModel counterModel =new CounterModel();
 	  try  {
-		   counterModel= counterServiceInterface.fetchCurrentTimeAndCount();
-		 // model.put("records", counterModel);
+		  counterModel= counterServiceInterface.fetchCurrentTimeAndCount();
 		  return counterModel;
 	  } catch (Exception e) {
-		 // model.put("message", e.getMessage());
-		  return counterModel;
+
 	  }
+	  return counterModel;
   }
 
   @Bean
