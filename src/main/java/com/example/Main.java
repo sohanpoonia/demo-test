@@ -61,9 +61,9 @@ public class Main {
   @RequestMapping("/db")
   String db(Map<String, Object> model) {
 	  try  {
-		  CounterModel counterModel= counterServiceInterface.fetchCurrentTimeAndCount();
-		  model.put("time", counterModel.getTimestamp());
-		  model.put("count", counterModel.getCalls());
+		/*  CounterModel counterModel= counterServiceInterface.fetchCurrentTimeAndCount();
+		  model.put("time", counterModel.getTimestamp());*/
+		  model.put("records", "ssssssssssssss");
 		  return "db";
 	  } catch (Exception e) {
 		  model.put("message", e.getMessage());
