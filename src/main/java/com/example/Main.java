@@ -16,7 +16,6 @@
 
 package com.example;
 
-import com.example.exception.ApplicationException;
 import com.example.model.CounterModel;
 import com.example.service.CounterServiceInterface;
 import com.zaxxer.hikari.HikariConfig;
@@ -29,7 +28,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.sql.DataSource;
 
@@ -38,7 +36,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
 
 @Controller
@@ -50,14 +47,11 @@ public class Main {
 
   @Autowired
   private DataSource dataSource;
-  
-  @Autowired
-  private CounterServiceInterface counterServiceInterface;
+  @Autowired CounterServiceInterface counterServiceInterface;
 
   public static void main(String[] args) throws Exception {
     SpringApplication.run(Main.class, args);
   }
-  
 
   @RequestMapping("/")
   String index() {
@@ -65,13 +59,16 @@ public class Main {
   }
 
   @RequestMapping("/db")
-  @ResponseBody
-  Map<String, Object> db() throws ApplicationException {
-	  Map<String, Object> map=new HashMap<>();
-	  CounterModel counterModel= counterServiceInterface.fetchCurrentTimeAndCount();
-	  map.put("time", counterModel.getTimestamp());
-	  map.put("count", counterModel.getCalls());
-	  return map;
+  String db(Map<String, Object> model) {
+	  try  {
+		  CounterModel counterModel= counterServiceInterface.fetchCurrentTimeAndCount();
+		  model.put("time", counterModel.getTimestamp());
+		  model.put("count", counterModel.getCalls());
+		  return "db";
+	  } catch (Exception e) {
+		  model.put("message", e.getMessage());
+		  return "error";
+	  }
   }
 
   @Bean
