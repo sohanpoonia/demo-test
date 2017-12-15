@@ -17,7 +17,7 @@ public class CounterServiceInterfaceImpl implements CounterServiceInterface {
 		CounterModel counterModel=new CounterModel();
 		counterModel.setCalls(counter.incrementAndGet());
 		counterModel.setTimestamp(DateUtility.formatCurrentDate());
-		return null;
+		return counterModel;
 	}
 
 	@Override
