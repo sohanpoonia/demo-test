@@ -8,10 +8,17 @@ import com.gilbarco.exception.ApplicationException;
 import com.gilbarco.model.CounterModel;
 import com.gilbarco.service.CounterServiceInterface;
 import com.gilbarco.utility.DateUtility;
-
+/**
+ * 
+ * @author sohan.lal
+ *
+ */
 @Service
 public class CounterServiceInterfaceImpl implements CounterServiceInterface {
-	private AtomicInteger counter=new AtomicInteger();
+	//by default the service is singleton but Atomic Integer will
+	//be helpful to keep the count in multithreaded environment correctly
+	//thus using this type for variable: counter.
+	private final AtomicInteger counter=new AtomicInteger();
 	@Override
 	public CounterModel fetchCurrentTimeAndCount() throws ApplicationException {
 		CounterModel counterModel=new CounterModel();
