@@ -9,6 +9,7 @@ import com.gilbarco.common.CommonConstants;
 public class DateUtility {
 
 	public static final String formatCurrentDate() {
+		//if required: instead of a constant Format the same can be taken as input from user in a parameter and we can use below method
 		SimpleDateFormat formater = new SimpleDateFormat(CommonConstants.CUSTOM_DATE_TIME_FORMAT);
 		return formater.format(new Date());
 
