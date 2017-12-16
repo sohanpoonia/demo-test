@@ -54,12 +54,17 @@ public class Main {
   @RequestMapping(method=RequestMethod.GET,value="/fetchCurrentTimeAndCount",produces=MediaType.APPLICATION_JSON_VALUE)
   @ResponseBody
   CounterModel fetchCurrentTimeAndCount() {
+	  // ApplicationLogger.info(Main.class, "Method fetchCurrentTimeAndCount start");
+	  //We can enable looger by configure the path in YML or properties file
+	  //logging:  file:  D:\logs\coutner.log
 	  CounterModel counterModel =null;
 	  try  {
 		  counterModel= counterServiceInterface.fetchCurrentTimeAndCount();
 	  } catch (ApplicationException e) {
             //here we can handle the user defined exception and send the response code 
+            // ApplicationLogger.error(Main.class, e);
 	  }
+	   // ApplicationLogger.info(Main.class, "Method fetchCurrentTimeAndCount end");
 	  return counterModel;
   }
 
