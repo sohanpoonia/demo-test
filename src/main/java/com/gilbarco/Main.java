@@ -28,6 +28,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.gilbarco.exception.ApplicationException;
 import com.gilbarco.model.CounterModel;
 import com.gilbarco.service.CounterServiceInterface;
+/**
+ * 
+ * @author sohan.lal
+ *
+ */
 
 @Controller
 @SpringBootApplication
@@ -42,7 +47,10 @@ public class Main {
   String index() {
     return "index";
   }
-
+ /**
+   * URL-https://young-plateau-50994.herokuapp.com/fetchCurrentTimeAndCount
+   * @return
+   */
   @RequestMapping(method=RequestMethod.GET,value="/fetchCurrentTimeAndCount",produces=MediaType.APPLICATION_JSON_VALUE)
   @ResponseBody
   CounterModel fetchCurrentTimeAndCount() {
@@ -50,7 +58,7 @@ public class Main {
 	  try  {
 		  counterModel= counterServiceInterface.fetchCurrentTimeAndCount();
 	  } catch (ApplicationException e) {
-
+            //here we can handle the user defined exception and send the response code 
 	  }
 	  return counterModel;
   }
