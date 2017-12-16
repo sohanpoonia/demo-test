@@ -46,7 +46,7 @@ public class Main {
   @RequestMapping(method=RequestMethod.GET,value="/fetchCurrentTimeAndCount",produces=MediaType.APPLICATION_JSON_VALUE)
   @ResponseBody
   CounterModel fetchCurrentTimeAndCount() {
-	  CounterModel counterModel =new CounterModel();
+	  CounterModel counterModel =null;
 	  try  {
 		  counterModel= counterServiceInterface.fetchCurrentTimeAndCount();
 	  } catch (ApplicationException e) {
